@@ -1,6 +1,5 @@
 package bullsandcows;
 
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,10 +13,10 @@ import static javafx.beans.binding.Bindings.when;
 public class SecondaryController {
 
     public TextField myTextField;
-    public Label myTextLablel;
+    public Label myTextLabel;
 
     public void initialize() {
-        myTextLablel.textProperty()
+        myTextLabel.textProperty()
                 .bind(when(isNotEmpty(myTextField.textProperty()))
                         .then(concat(
                                 "Hello, ",
