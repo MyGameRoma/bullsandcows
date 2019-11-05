@@ -101,5 +101,9 @@ public class PrimaryController {
         turns.sort();
 
         System.out.println("Button pressed! " + guess);
+
+        if (bullsAndCows.getBulls() == 4){
+            App.setRoot("secondary");
+        }
     }
 }

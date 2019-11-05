@@ -12,20 +12,6 @@ import static javafx.beans.binding.Bindings.when;
 
 public class SecondaryController {
 
-    public TextField myTextField;
-    public Label myTextLabel;
-
-    public void initialize() {
-        myTextLabel.textProperty()
-                .bind(when(isNotEmpty(myTextField.textProperty()))
-                        .then(concat(
-                                "Hello, ",
-                                myTextField.textProperty(),
-                                "!"))
-                        .otherwise("Enter your name!")
-                );
-    }
-
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
