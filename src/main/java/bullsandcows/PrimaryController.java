@@ -8,10 +8,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class PrimaryController {
     public Spinner<Integer> num1;
@@ -62,14 +59,35 @@ public class PrimaryController {
     }
 
     private int calculateBulls(List<Integer> userNumbers) {
-//      myNumbers.get(0)
-//      userNumbers.get(3)
-        return 0;
+        int result = 0;
+        for (int i = 0; i < userNumbers.size(); i++) {
+            int myNum = myNumbers.get(i);
+            int userNum = userNumbers.get(i);
+            if (myNum == userNum) {
+                result++;
+            }
+        }
+        return result;
     }
 
     private int calculateCows(List<Integer> userNumbers) {
-        return 0;
+        int result = 0;
+        for (int ui = 0; ui < userNumbers.size(); ui++) {
+            for (int mi = 0; mi < myNumbers.size(); mi++) {
+                if (ui == mi) {
+                    continue;
+                }
+                int myNum = myNumbers.get(mi);
+                int userNum = userNumbers.get(ui);
+                if (myNum == userNum) {
+                    result++;
+                }
+            }
+        }
+        return result;
     }
+
+
 
     public void doTurn(ActionEvent actionEvent) throws IOException {
         turnCounter++;
