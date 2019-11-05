@@ -61,6 +61,16 @@ public class PrimaryController {
         App.setRoot("secondary");
     }
 
+    private int calculateBulls(List<Integer> userNumbers) {
+//      myNumbers.get(0)
+//      userNumbers.get(3)
+        return 0;
+    }
+
+    private int calculateCows(List<Integer> userNumbers) {
+        return 0;
+    }
+
     public void doTurn(ActionEvent actionEvent) throws IOException {
         turnCounter++;
         int n1 = num1.getValue();
@@ -69,9 +79,15 @@ public class PrimaryController {
         int n4 = num4.getValue();
         String guess = "" + n1 + n2 + n3 + n4;
 
+        var userNumbers = List.of(n1, n2, n3, n4);
+        var cows = calculateCows(userNumbers);
+        var bulls = calculateBulls(userNumbers);
+
         Turn turn = new Turn();
         turn.setGuess(guess);
         turn.setTurnNr(turnCounter);
+        turn.setCows(cows);
+        turn.setBulls(bulls);
 
         turns.getItems().add(turn);
 
