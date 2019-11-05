@@ -2,6 +2,7 @@ package bullsandcows;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javafx.beans.binding.Bindings;
@@ -19,8 +20,10 @@ public class PrimaryController {
     public Spinner<Integer> num4;
     public TableView<Turn> turns;
     public Button goButton;
+    private List<Integer> myNumbers;
 
     public void initialize() {
+        generateRandomNumber();
         goButton.disableProperty().bind(
                 Bindings.createBooleanBinding(this::invalidNumbers,
                         num1.valueProperty(),
@@ -28,6 +31,10 @@ public class PrimaryController {
                         num3.valueProperty(),
                         num4.valueProperty())
         );
+    }
+
+    private void generateRandomNumber() {
+        // TODO
     }
 
     private Boolean invalidNumbers() {
