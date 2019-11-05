@@ -1,10 +1,5 @@
 package bullsandcows;
 
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,14 +7,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+
 public class PrimaryController {
-    private int turnCounter;
     public Spinner<Integer> num1;
     public Spinner<Integer> num2;
     public Spinner<Integer> num3;
     public Spinner<Integer> num4;
     public TableView<Turn> turns;
     public Button goButton;
+    private int turnCounter;
     private List<Integer> myNumbers;
 
     public void initialize() {
@@ -34,7 +35,16 @@ public class PrimaryController {
     }
 
     private void generateRandomNumber() {
-        // TODO
+        var rand = new Random();
+        myNumbers = new ArrayList<>();
+        while (myNumbers.size() < 4) {
+            int num = rand.nextInt(10);
+            if (!myNumbers.contains(num)) {
+                myNumbers.add(num);
+            }
+        }
+        // TODO remove this line after debug
+        System.out.println(myNumbers);
     }
 
     private Boolean invalidNumbers() {
