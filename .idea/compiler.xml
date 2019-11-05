@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bullsandcows" />
+        <module name="BullsAndCows-TSI105" />
       </profile>
     </annotationProcessing>
   </component>

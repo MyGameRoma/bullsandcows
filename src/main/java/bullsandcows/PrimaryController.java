@@ -58,33 +58,23 @@ public class PrimaryController {
         App.setRoot("secondary");
     }
 
-    private int calculateBulls(List<Integer> userNumbers) {
-        int result = 0;
-        for (int i = 0; i < userNumbers.size(); i++) {
-            int myNum = myNumbers.get(i);
-            int userNum = userNumbers.get(i);
-            if (myNum == userNum) {
-                result++;
-            }
-        }
-        return result;
-    }
-
-    private int calculateCows(List<Integer> userNumbers) {
-        int result = 0;
+    private TurnResult calculateBullsAndCows(List<Integer> userNumbers) {
+        int bulls = 0;
+        int cows = 0;
         for (int ui = 0; ui < userNumbers.size(); ui++) {
             for (int mi = 0; mi < myNumbers.size(); mi++) {
-                if (ui == mi) {
-                    continue;
-                }
                 int myNum = myNumbers.get(mi);
                 int userNum = userNumbers.get(ui);
                 if (myNum == userNum) {
-                    result++;
+                    if (ui == mi) {
+                        bulls++;
+                    } else {
+                        cows++;
+                    }
                 }
             }
         }
-        return result;
+        return new TurnResult(bulls, cows);
     }
 
 
@@ -98,14 +88,13 @@ public class PrimaryController {
         String guess = "" + n1 + n2 + n3 + n4;
 
         var userNumbers = List.of(n1, n2, n3, n4);
-        var cows = calculateCows(userNumbers);
-        var bulls = calculateBulls(userNumbers);
+        var bullsAndCows = calculateBullsAndCows(userNumbers);
 
         Turn turn = new Turn();
         turn.setGuess(guess);
         turn.setTurnNr(turnCounter);
-        turn.setCows(cows);
-        turn.setBulls(bulls);
+        turn.setBulls(bullsAndCows.getBulls());
+        turn.setCows(bullsAndCows.getCows());
 
         turns.getItems().add(turn);
 
